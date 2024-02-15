@@ -27,7 +27,7 @@ const Album = ({ albums }) => {
       {photos.length > 0 ? (
         <div>
           <h3 className="font-bold text-white mb-5 italic overline">
-            Album {album.id} Photos
+            Album No. {album.id} Photos
           </h3>
           <ul
             className="
