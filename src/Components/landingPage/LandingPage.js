@@ -1,11 +1,11 @@
 import React from "react";
 import Login from "./Login";
 
+
 const LandingPage = () => {
   return (
     <div
-      className="bg-sky-800 flex flex-col min-h-screen justify-center items-center w-full h-full bg-cover bg-center bg-no-repeat bg-fixed bg-gradient-to-r from-sky-800 to-sky-900
-    "
+      className="flex flex-col min-h-screen justify-center items-center bg-cover bg-center bg-no-repeat bg-fixed bg-gradient-to-r from-sky-800 to-sky-900"
     >
       <h1 className="text-white font-bold underline justify-center flex text-4xl mt-20 text-center opacity-70 tracking-wide">
         Hello World
