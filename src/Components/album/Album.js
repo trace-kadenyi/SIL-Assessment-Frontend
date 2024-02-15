@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Album = ({ albums }) => {
-  const [photos, setPhotos] = useState([]);
+const Album = ({ albums, photos, getAlbumPhotos }) => {
   //    get album id
   const { id } = useParams();
   //   find photos for the album
   const album = albums.find((album) => album.id === parseInt(id));
   // get album photos
-  const getAlbumPhotos = async (albumId) => {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
-    );
-    const data = await response.json();
-    setPhotos(data);
-  };
-
   getAlbumPhotos(album.id);
 
   return (
@@ -35,7 +26,7 @@ const Album = ({ albums }) => {
                 "
           >
             {photos.map((photo) => (
-              <li key={photo.id} className="text-white">
+              <li key={photo.id} className="text-white cursor-pointer">
                 <img
                   src={photo.url}
                   alt={photo.title}

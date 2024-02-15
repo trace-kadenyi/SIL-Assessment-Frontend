@@ -5,12 +5,15 @@ import LandingPage from "./Components/landingPage/LandingPage";
 import Home from "./Components/home/Homepage";
 import User from "./Components/user/User";
 import Album from "./Components/album/Album";
+import Photo from "./Components/photo/Photo";
 
 const App = () => {
   const [users, setUsers] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [userAlbums, setUserAlbums] = useState([]);
   const [albumCount, setAlbumCount] = useState(0);
+  const [photos, setPhotos] = useState([]);
+
 
   const getUsers = async () => {
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
@@ -34,6 +37,14 @@ const App = () => {
     const data = await response.json();
     setUserAlbums(data);
     setAlbumCount(data.length);
+  };
+
+  const getAlbumPhotos = async (albumId) => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+    );
+    const data = await response.json();
+    setPhotos(data);
   };
 
   return (
@@ -65,7 +76,10 @@ const App = () => {
           path="/user/:id"
           element={<User users={users} userAlbums={userAlbums} />}
         />
-        <Route path="/album/:id" element={<Album albums={albums} />} />
+        <Route path="/album/:id" element={<Album albums={albums} 
+        getAlbumPhotos={getAlbumPhotos} photos={photos}
+        />} />
+        <Route path="/photo/:id" element={<Photo />} />
       </Routes>
     </div>
   );
