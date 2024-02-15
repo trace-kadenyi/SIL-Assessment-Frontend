@@ -23,7 +23,7 @@ const Login = () => {
       {user ? (
         <div>
           <h5
-            className="text-white mt-5 text-center mx-auto opacity-70 p-4 uppercase font-bold tracking-wide overline
+            className="text-white mt-5 text-center mx-auto opacity-70 p-4 uppercase font-bold tracking-wide overline text-white mt-10 text-center w-100 md:w-70 lg:w-3/4
         "
           >
             You are logged in as {user}. <Home />
