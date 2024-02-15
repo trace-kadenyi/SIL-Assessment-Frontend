@@ -1,52 +1,21 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
-  // JSON Placeholder API
+const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
   //   Have a page that lists all the users:
   // i. The page should tell you how many albums a user has
   // ii. The page must run a GET request for the users
   // iii. The page must run a GET request for the albums
 
-  const [users, setUsers] = useState([]);
-  const [albums, setAlbums] = useState([]);
-  const [userAlbums, setUserAlbums] = useState([]);
-  const [albumCount, setAlbumCount] = useState(0);
-  const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
-
-  // get request for users
-  const getUsers = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    const data = await response.json();
-    setUsers(data);
-    // get user albums count
-    data.map((user) => {
-      getUserAlbums(user.id);
-    });
-  };
-
-  // get request for albums
-  const getAlbums = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/albums");
-    const data = await response.json();
-    setAlbums(data);
-  };
-
-  // get request for user albums
-  const getUserAlbums = async (userId) => {
-    const response = await fetch(
-      `https://jsonplaceholder.typicode.com/albums?userId=${userId}`
-    );
-    const data = await response.json();
-    setUserAlbums(data);
-    setAlbumCount(data.length);
-    setClicked(true);
-  };
 
   // navigate to user page
   const navigateToUser = (userId) => {
     navigate(`/user/${userId}`);
+  };
+
+  const navigatetoAlbum = (albumId) => {
+    navigate(`/album/${albumId}`);
   };
 
   return (
@@ -95,7 +64,11 @@ const Home = () => {
           {/* list all the albums */}
           <ol style={{ listStyleType: "number" }} className="text-white">
             {albums.map((album) => (
-              <li key={album.id} className="leading-7">
+              <li
+                key={album.id}
+                className="leading-7 cursor-pointer my-5 hover:underline"
+                onClick={() => navigatetoAlbum(album.id)}
+              >
                 {album.title}
               </li>
             ))}
