@@ -8,11 +8,14 @@ const Photo = ({ photos, getAlbumPhotos }) => {
 
   const photo = photos.find((photo) => photo.id === parseInt(id));
 
-  // getAlbumPhotos(photo.albumId);
-
   // PUT REQUEST TO UPDATE PHOTO TITLE
   const updatePhotoTitle = async (e, id) => {
     e.preventDefault();
+    // if title is empty, return
+    if (!title) {
+      setResponse("Please enter a title to update...");
+      return;
+    }
     try {
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/photos/${id}`,
@@ -63,16 +66,20 @@ const Photo = ({ photos, getAlbumPhotos }) => {
           <input
             type="text"
             value={title}
+            name="title"
             onChange={(e) => setTitle(e.target.value)}
-            className="border-2 border-sky-500 p-1 mt-5 text-black"
+            className="border-2 border-sky-500 p-1 mt-5 text-black focus:outline-none focus:ring "
           />
           <button className="bg-sky-500 text-white px-2 py-1 mt-5 font-bold">
             Update Title
           </button>
         </form>
         <p
-          className="text-emerald-500 mt-5
-        "
+          className={`text-center mt-5 font-semibold ${
+            response === "Title updated successfully!!!"
+              ? "text-green-500"
+              : "text-red-600"
+          }`}
         >
           {response}
         </p>
