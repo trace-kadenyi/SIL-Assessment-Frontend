@@ -57,8 +57,8 @@ const Photo = ({ photos, getAlbumPhotos }) => {
           onSubmit={(e) => updatePhotoTitle(e, photo.id)}
           className="flex flex-col mt-5"
         >
-          <label htmlFor="title" className="text-white">
-            If you want to update the title, please enter the new title below
+          <label htmlFor="title" className="text-white font-semibold">
+            To update the title, enter the new title below:
           </label>
           <input
             type="text"
@@ -66,7 +66,7 @@ const Photo = ({ photos, getAlbumPhotos }) => {
             onChange={(e) => setTitle(e.target.value)}
             className="border-2 border-sky-500 p-1 mt-5 text-black"
           />
-          <button className="bg-sky-500 text-white px-2 py-1 mt-5">
+          <button className="bg-sky-500 text-white px-2 py-1 mt-5 font-bold">
             Update Title
           </button>
         </form>
