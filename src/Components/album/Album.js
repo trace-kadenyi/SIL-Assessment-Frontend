@@ -29,7 +29,7 @@ const Album = ({ albums, photos, getAlbumPhotos }) => {
       </h2>
       <button
         onClick={handleGetAlbumPhotos}
-        className="bg-sky-500 text-white p-2 rounded-md mb-5"
+        className="bg-sky-50 hover:bg-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg focus:bg-black focus:text-white mb-3"
       >
         Get Album Photos
       </button>

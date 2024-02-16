@@ -19,7 +19,7 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
   };
 
   return (
-    <main className="p-20">
+    <main className="p-10 lg:p-20">
       <h2 className="text-4xl font-extrabold text-white underline mb-10">
         HOME
       </h2>{" "}
@@ -27,15 +27,15 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
       <div>
         <p className="text-white">
           The current page provides a list of all the users and albums on the
-          database.{" "}
+          database. <br />
           <span className="underline font-bold">
-            Click on each user to view their details.
+            Click on the buttons below to get the users and albums respectively.
           </span>
         </p>
         {/* get request for users*/}
         <div className="my-10 w-full flex items-start flex-col gap-5">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-sky-50 hover:bg-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg focus:bg-black focus:text-white "
             onClick={getUsers}
           >
             Get Users
@@ -56,7 +56,7 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
 
           {/* get albums */}
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-sky-50 hover:bg-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg focus:bg-black focus:text-white"
             onClick={getAlbums}
           >
             Get All Albums
