@@ -79,7 +79,11 @@ const App = () => {
         <Route path="/album/:id" element={<Album albums={albums} 
         getAlbumPhotos={getAlbumPhotos} photos={photos}
         />} />
-        <Route path="/photo/:id" element={<Photo />} />
+        <Route path="/photo/:id" element={<Photo
+        photos={photos}
+        getAlbumPhotos={getAlbumPhotos}
+
+         />} />
       </Routes>
     </div>
   );
