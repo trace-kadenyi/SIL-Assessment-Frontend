@@ -1,22 +1,29 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Photo = ({ photos, getAlbumPhotos }) => {
+const Photo = ({ photos }) => {
+  // initialize state for the title and response
   const [title, setTitle] = useState("");
   const [response, setResponse] = useState("");
+
+  // get the photo id
   const { id } = useParams();
 
+  // find the photo
   const photo = photos.find((photo) => photo.id === parseInt(id));
 
   // PUT REQUEST TO UPDATE PHOTO TITLE
   const updatePhotoTitle = async (e, id) => {
+    // prevent default form submission
     e.preventDefault();
+
     // if title is empty, return
     if (!title) {
       setResponse("Please enter a title to update...");
       return;
     }
     try {
+      // make a PUT request to update the photo title
       const response = await fetch(`http://localhost:3500/api/photos/${id}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -27,14 +34,18 @@ const Photo = ({ photos, getAlbumPhotos }) => {
         },
       });
 
+      // if the response is not ok, throw an error
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
+      // log the data
       console.log(data);
+      // set the title to empty and the response to success
       setTitle("");
       setResponse("Title updated successfully!!!");
     } catch (error) {
+      // catch any errors and log them
       console.error("There was an error:", error);
     }
   };

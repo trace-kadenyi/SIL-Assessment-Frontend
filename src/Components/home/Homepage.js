@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
-  //   Have a page that lists all the users:
-  // i. The page should tell you how many albums a user has
-  // ii. The page must run a GET request for the users
-  // iii. The page must run a GET request for the albums
-
   const navigate = useNavigate();
 
-  // navigate to user page
+  // handle navigation to user page
   const navigateToUser = (userId) => {
     navigate(`/user/${userId}`);
   };
 
+  // handle navigation to album page
   const navigatetoAlbum = (albumId) => {
     navigate(`/album/${albumId}`);
   };
@@ -27,13 +23,19 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
       <div>
         <p className="text-white">
           <span className="font-bold">
-            1. Click on the buttons below to <span className="text-emerald-500 italic">GET</span> the users and albums respectively.
-          </span><br/>
+            1. Click on the buttons below to{" "}
+            <span className="text-emerald-500 italic">GET</span> the users and
+            albums respectively.
+          </span>
+          <br />
           <span className="font-bold">
-           2. Click on individual users to <span className="text-emerald-500 italic">GET</span> user details.
-          </span><br/>
+            2. Click on individual users to{" "}
+            <span className="text-emerald-500 italic">GET</span> user details.
+          </span>
+          <br />
           <span className="font-bold">
-           3. Click on individual albums to <span className="text-emerald-500 italic">GET</span> album details.
+            3. Click on individual albums to{" "}
+            <span className="text-emerald-500 italic">GET</span> album details.
           </span>
         </p>
         {/* get request for users*/}
