@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "./Components/landingPage/LandingPage";
@@ -8,11 +8,13 @@ import Album from "./Components/album/Album";
 import Photo from "./Components/photo/Photo";
 
 const App = () => {
+  // initialize state for users, albums, userAlbums, albumCount, and photos
   const [users, setUsers] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [userAlbums, setUserAlbums] = useState([]);
   const [albumCount, setAlbumCount] = useState(0);
   const [photos, setPhotos] = useState([]);
+
   // object to hold the user's albums
   const userAlbumsObj = {};
 
@@ -24,6 +26,7 @@ const App = () => {
     setUsers(data);
     // get the albums for each user
     data.map((user) => {
+      // call the getUserAlbums function for each user
       getUserAlbums(user.id);
     });
   };
@@ -50,16 +53,17 @@ const App = () => {
     });
     // set the userAlbums state
     setUserAlbums(userAlbumsObj);
-    
+
     // set the albumCount state
     setAlbumCount(data.ALBUMCOUNT);
   };
 
+  // fetch album photos from the API
   const getAlbumPhotos = async (albumId) => {
-    const response = await fetch(
-      `http://localhost:3500/api/photos/${albumId}`
-    );
+    // fetch the album photos
+    const response = await fetch(`http://localhost:3500/api/photos/${albumId}`);
     const data = await response.json();
+    // set the photos state
     setPhotos(data);
   };
 
@@ -102,10 +106,7 @@ const App = () => {
             />
           }
         />
-        <Route
-          path="/photo/:id"
-          element={<Photo photos={photos} getAlbumPhotos={getAlbumPhotos} />}
-        />
+        <Route path="/photo/:id" element={<Photo photos={photos} />} />
       </Routes>
     </div>
   );
