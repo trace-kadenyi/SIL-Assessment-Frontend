@@ -57,7 +57,7 @@ const App = () => {
 
   const getAlbumPhotos = async (albumId) => {
     const response = await fetch(
-      `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+      `http://localhost:3500/api/photos/${albumId}`
     );
     const data = await response.json();
     setPhotos(data);
