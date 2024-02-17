@@ -57,8 +57,8 @@ const Album = ({ albums, photos, getAlbumPhotos }) => {
           </ul>
         </div>
       ) : (
-        <p className="text-white">
-          Click the button above to view the Album Photos
+        <p className="text-white underline font-bold">
+          Click the button above to <span className="text-emerald-500 italic">GET</span> the Album Photos
         </p>
       )}
     </div>

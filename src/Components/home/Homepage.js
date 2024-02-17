@@ -26,10 +26,14 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
       {/* list all users */}
       <div>
         <p className="text-white">
-          The current page provides a list of all the users and albums on the
-          database. <br />
-          <span className="underline font-bold">
-            Click on the buttons below to get the users and albums respectively.
+          <span className="font-bold">
+            1. Click on the buttons below to <span className="text-emerald-500 italic">GET</span> the users and albums respectively.
+          </span><br/>
+          <span className="font-bold">
+           2. Click on individual users to <span className="text-emerald-500 italic">GET</span> user details.
+          </span><br/>
+          <span className="font-bold">
+           3. Click on individual albums to <span className="text-emerald-500 italic">GET</span> album details.
           </span>
         </p>
         {/* get request for users*/}

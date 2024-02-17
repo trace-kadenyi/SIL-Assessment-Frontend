@@ -70,15 +70,15 @@ const Photo = ({ photos, getAlbumPhotos }) => {
             onChange={(e) => setTitle(e.target.value)}
             className="border-2 border-sky-500 p-1 mt-5 text-black focus:outline-none focus:ring "
           />
-          <button className="bg-sky-500 text-white px-2 py-1 mt-5 font-bold">
+          <button className="bg-sky-500 text-white px-2 py-1 mt-5 font-bold hover:bg-sky-600">
             Update Title
           </button>
         </form>
         <p
-          className={`text-center mt-5 font-semibold ${
+          className={`text-center mt-5 font-bold uppercase ${
             response === "Title updated successfully!!!"
               ? "text-green-500"
-              : "text-red-600"
+              : "text-red-500"
           }`}
         >
           {response}
