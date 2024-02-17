@@ -20,7 +20,7 @@ const App = () => {
 
   // fetch users from the API
   const getUsers = async () => {
-    const response = await fetch("http://localhost:3500/api/users");
+    const response = await fetch("https://sil-assessment-backend.vercel.app/api/users");
     const data = await response.json();
     // set the users state
     setUsers(data);
@@ -33,7 +33,7 @@ const App = () => {
 
   // fetch albums from the API
   const getAlbums = async () => {
-    const response = await fetch("http://localhost:3500/api/albums");
+    const response = await fetch("https://sil-assessment-backend.vercel.app/api/albums");
     const data = await response.json();
     // set the albums state
     setAlbums(data);
@@ -42,7 +42,7 @@ const App = () => {
   // fetch user albums from the API
   const getUserAlbums = async (userId) => {
     // fetch the user's albums
-    const response = await fetch(`http://localhost:3500/api/albums/${userId}`);
+    const response = await fetch(`https://sil-assessment-backend.vercel.app/api/albums/${userId}`);
     const data = await response.json();
 
     // add the user's albums to the initialized userAlbumsObj
@@ -61,7 +61,7 @@ const App = () => {
   // fetch album photos from the API
   const getAlbumPhotos = async (albumId) => {
     // fetch the album photos
-    const response = await fetch(`http://localhost:3500/api/photos/${albumId}`);
+    const response = await fetch(`https://sil-assessment-backend.vercel.app/api/photos/${albumId}`);
     const data = await response.json();
     // set the photos state
     setPhotos(data);

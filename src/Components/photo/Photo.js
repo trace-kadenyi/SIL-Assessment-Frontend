@@ -24,7 +24,7 @@ const Photo = ({ photos }) => {
     }
     try {
       // make a PUT request to update the photo title
-      const response = await fetch(`http://localhost:3500/api/photos/${id}`, {
+      const response = await fetch(`https://sil-assessment-backend.vercel.app/api/photos/${id}`, {
         method: "PUT",
         body: JSON.stringify({
           title: title,
