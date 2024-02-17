@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import LandingPage from "./Components/landingPage/LandingPage";
@@ -13,6 +13,8 @@ const App = () => {
   const [userAlbums, setUserAlbums] = useState([]);
   const [albumCount, setAlbumCount] = useState(0);
   const [photos, setPhotos] = useState([]);
+  // object to hold the user's albums
+  const userAlbumsObj = {};
 
   // fetch users from the API
   const getUsers = async () => {
@@ -36,11 +38,19 @@ const App = () => {
 
   // fetch user albums from the API
   const getUserAlbums = async (userId) => {
+    // fetch the user's albums
     const response = await fetch(`http://localhost:3500/api/albums/${userId}`);
     const data = await response.json();
-    // console.log(data);
+
+    // add the user's albums to the initialized userAlbumsObj
+    data.albums.forEach((album) => {
+      const userAlbumsStore = userAlbumsObj[album.userId] || [];
+      userAlbumsStore.push(album);
+      userAlbumsObj[album.userId] = userAlbumsStore;
+    });
     // set the userAlbums state
-    setUserAlbums(data.albums);
+    setUserAlbums(userAlbumsObj);
+    
     // set the albumCount state
     setAlbumCount(data.ALBUMCOUNT);
   };
