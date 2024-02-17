@@ -1,10 +1,14 @@
 import React from "react";
 
 const LogoutFunc = () => {
+  // function to logout
   const logout = () => {
+    // clear the local storage
     localStorage.clear();
+    // reload the page
     window.location.reload();
   };
+
   return (
     <div>
       <button

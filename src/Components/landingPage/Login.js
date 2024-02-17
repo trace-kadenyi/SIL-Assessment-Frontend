@@ -5,9 +5,11 @@ import LogoutFunc from "./LogoutFunc.js";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  // initialize state for user
   const [user, setUser] = useState("");
   const navigate = useNavigate();
 
+  // handle click function
   const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
       setUser(data.user.email);
@@ -15,9 +17,11 @@ const Login = () => {
     });
   };
 
+  // useeffect to get user from local storage
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
   });
+
   return (
     <div>
       {user ? (

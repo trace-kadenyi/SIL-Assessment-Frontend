@@ -2,40 +2,46 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
-  //   Have a page that lists all the users:
-  // i. The page should tell you how many albums a user has
-  // ii. The page must run a GET request for the users
-  // iii. The page must run a GET request for the albums
-
   const navigate = useNavigate();
 
-  // navigate to user page
+  // handle navigation to user page
   const navigateToUser = (userId) => {
     navigate(`/user/${userId}`);
   };
 
+  // handle navigation to album page
   const navigatetoAlbum = (albumId) => {
     navigate(`/album/${albumId}`);
   };
 
   return (
-    <main className="p-20">
+    <main className="p-10 lg:p-20">
       <h2 className="text-4xl font-extrabold text-white underline mb-10">
         HOME
       </h2>{" "}
       {/* list all users */}
       <div>
         <p className="text-white">
-          The current page provides a list of all the users and albums on the
-          database.{" "}
-          <span className="underline font-bold">
-            Click on each user to view their details.
+          <span className="font-bold">
+            1. Click on the buttons below to{" "}
+            <span className="text-emerald-500 italic">GET</span> the users and
+            albums respectively.
+          </span>
+          <br />
+          <span className="font-bold">
+            2. Click on individual users to{" "}
+            <span className="text-emerald-500 italic">GET</span> user details.
+          </span>
+          <br />
+          <span className="font-bold">
+            3. Click on individual albums to{" "}
+            <span className="text-emerald-500 italic">GET</span> album details.
           </span>
         </p>
         {/* get request for users*/}
         <div className="my-10 w-full flex items-start flex-col gap-5">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-sky-50 hover:bg-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg focus:bg-black focus:text-white "
             onClick={getUsers}
           >
             Get Users
@@ -56,7 +62,7 @@ const Home = ({ users, albums, albumCount, getUsers, getAlbums }) => {
 
           {/* get albums */}
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-sky-50 hover:bg-black text-black font-bold py-2 px-4 rounded hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg focus:bg-black focus:text-white"
             onClick={getAlbums}
           >
             Get All Albums
