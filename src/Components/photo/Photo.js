@@ -17,18 +17,15 @@ const Photo = ({ photos, getAlbumPhotos }) => {
       return;
     }
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/photos/${id}`,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            title: title,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        }
-      );
+      const response = await fetch(`http://localhost:3500/api/photos/${id}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          title: title,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
